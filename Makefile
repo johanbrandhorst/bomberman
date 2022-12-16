@@ -1,9 +1,9 @@
 #
-# Makefile för att kompilera programmet Bomberman med g++
+# Compiles Bomberman with g++
 #
 CCC = g++
-CCFLAGS = -g -std=c++98 -pedantic -Wall -Wextra
-SDLFLAGS = -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer
+CCFLAGS = -g -std=c++98 -pedantic -Wall -Wextra $(shell sdl-config --cflags)
+SDLFLAGS = $(shell sdl-config --libs) -lSDL_image -lSDL_ttf -lSDL_mixer
 
 Bomberman :  main.o Object.o Menu.o Input.o Class_SDL.o Board.o Timer.o
 	$(CCC) $(CCFLAGS) $(SDLFLAGS) -o Bomberman main.o Object.o Menu.o Input.o Class_SDL.o Board.o Timer.o
